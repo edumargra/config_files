@@ -1,0 +1,12 @@
+[user]
+	name = Eduard MG
+	email = "youremail@example.com"
+[core]
+	editor = nvim
+	excludesFile = $HOME/.gitignore
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD

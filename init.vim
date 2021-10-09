@@ -9,6 +9,8 @@
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
+  Plug 'tpope/vim-eunuch'
+  Plug 'morhetz/gruvbox'
   call plug#end()
 
 " Ros formating
@@ -32,6 +34,7 @@
   set number
   set list
   set splitbelow splitright
+  set conceallevel=2
 
 " NerdTREE
   map <leader>n :NERDTreeToggle<CR>
@@ -42,6 +45,11 @@
       let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
   endif
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
-	autocmd BufWritePre * %s/\s\+$//e
-	autocmd BufWritePre * %s/\n\+\%$//e
-	autocmd BufWritePre *.[ch] %s/\%$/\r/e
+  autocmd BufWritePre * %s/\s\+$//e
+  autocmd BufWritePre * %s/\n\+\%$//e
+  autocmd BufWritePre *.[ch] %s/\%$/\r/e
+" Gruv color scheme
+  let g:gruvbox_italic=1
+  set background=dark " Setting light mode
+  let g:gruvbox_contrast_light='soft'
+  autocmd vimenter * ++nested colorscheme gruvbox

@@ -3,6 +3,7 @@
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
   Plug 'jreybert/vimagit'
+  Plug 'tpope/vim-fugitive'
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
   Plug 'vim-scripts/DoxygenToolkit.vim'

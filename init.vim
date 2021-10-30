@@ -23,19 +23,37 @@
   set backspace=indent,eol,start
   set autoindent
   set backup
-  set history=50
+  set history=500
   set ruler
   set showcmd
+  set showmode
   set incsearch
-  syntax on
+  syntax enable
   set hlsearch
+  set ignorecase
+  set smartcase
+  set linebreak
+  set scrolloff=3
+  set sidescrolloff=5
   filetype plugin indent on
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
       \  | wincmd p | diffthis
   set number
+  set relativenumber
   set list
   set splitbelow splitright
   set conceallevel=2
+  set cursorline
+  set spell
+  set autoread
+  set hidden
+  set wildmenu
+
+  set noswapfile
+  set nobackup
+  set nowb
+  set shell
+  set confirm
 
 " NerdTREE
   map <leader>n :NERDTreeToggle<CR>

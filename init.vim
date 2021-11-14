@@ -10,8 +10,11 @@
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
+  Plug 'lervag/vimtex'
   Plug 'tpope/vim-eunuch'
   Plug 'morhetz/gruvbox'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
   call plug#end()
 
 " Ros formating
@@ -72,3 +75,8 @@
   set background=dark " Setting light mode
   let g:gruvbox_contrast_light='soft'
   autocmd vimenter * ++nested colorscheme gruvbox
+" VimTex options
+  let g:vimtex_view_general_viewer = 'zathura'
+  " let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+" Runs a script that cleans out tex build files whenever I close out of a .tex file.
+  autocmd VimLeave *.tex !texclear %

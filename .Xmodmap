@@ -1,3 +1,0 @@
-clear control
-keycode 135 = Control_R
-add control = Control_R Control_L

@@ -11,6 +11,8 @@
   Plug 'vim-airline/vim-airline'
   Plug 'lervag/vimtex'
   Plug 'morhetz/gruvbox'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   call plug#end()
 
   let mapleader ="\<Space>"
@@ -104,7 +106,6 @@
   nnoremap <silent> ,/ :nohlsearch<CR>
 
 " NerdTREE
-  noremap <leader>n :NERDTreeToggle<CR>
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   if has('nvim')
       let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
@@ -112,6 +113,8 @@
       let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
   endif
   let g:NERDTreeShowLineNumbers=1
+  " Close the tab if NERDTree is the only window remaining in it.
+  autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
   autocmd BufWritePre * %s/\s\+$//e
@@ -126,3 +129,10 @@
 
 " VimTex options
   let g:vimtex_view_general_viewer = 'zathura'
+  " let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+
+" shortcuts
+  nnoremap <leader>t :$tabnew<CR>
+  nnoremap <leader>f :Files<CR>
+  nnoremap <leader>h :Files /home/edu/<CR>
+  noremap <leader>n :NERDTreeToggle<CR>

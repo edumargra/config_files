@@ -551,7 +551,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq org-todo-keywords
-        '((sequence "TODO(t!)" "NEXT(n!)" "DOINGNOW(d!)" "BLOCKED(b!)" "TODELEGATE(g!)" "DELEGATED(D!)" "FOLLOWUP(f!)" "TICKLE(T!)" "|" "CANCELLED(c!)" "DONE(F!)")))
+        '((sequence "TODO(t)" "DOINGNOW(d)" "BLOCKED(b)" "|" "DONE(F)")))
   (setq org-superstar-headline-bullets-list '("◉" "◎" "⚫" "○" "►" "◇"))
   (setq-default fill-column 80)
   (add-hook 'org-mode-hook #'auto-fill-mode)
@@ -560,8 +560,7 @@ before packages are loaded."
   (setq org-todo-keyword-faces
         '(("TODO" . org-warning)
           ("DOINGNOW" . "#E35DBF")
-          ("CANCELED" . (:foreground "white" :background "#4d4d4d" :weight bold))
-          ("DELEGATED" . "pink")
+          ("BLOCKED" . (:foreground "white" :background "#4d4d4d" :weight bold))
           ("NEXT" . "#008080")))
 )
 

@@ -1,0 +1,91 @@
+* My own config file for emacs (highly borrowed)
+
+** Reload/Visit this very file
+
+*** visit
+#+BEGIN_SRC emacs-lisp
+  (defun bp-visit ()
+    (interactive)
+    (find-file "~/.emacs.d/baking_powder.org"))
+  (global-set-key (kbd "C-c v") 'bp-visit)
+#+END_SRC
+
+*** reload
+#+BEGIN_SRC emacs-lisp
+  (defun bp-reload ()
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/baking_powder.org")))
+  (global-set-key (kbd "C-c  r") 'bp-reload)
+#+END_SRC
+
+** Packages installed
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init
+    (which-key-mode))
+#+END_SRC
+
+*** avy (move around)
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind
+    ("M-s" . avy-goto-char))
+#+END_SRC
+** Emacs file generation
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-file nil)
+  (setq auto-save-default nil)
+#+END_SRC
+** Terminal
+#+BEGIN_SRC emacs-lisp
+  (defvar my-term-shell "/bin/bash")
+  (defadvice ansi-term (before force-bash)
+    (interactive (list my-term-shell)))
+  (ad-activate 'ansi-term)
+  (global-set-key (kbd "<s-return>") 'ansi-term)
+#+END_SRC
+** Loose GUI section
+*** others
+#+BEGIN_SRC emacs-lisp
+  (setq ring-bell-function 'ignore)
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+*** IDO (fuzzy)
+#+BEGIN_SRC emacs-lisp
+  (setq ido-enable-flex-matching nil)
+  (setq ido-create-new-buffer 'always)
+  (ido-mode 1)
+  (use-package ido-vertical-mode
+    :ensure t
+    :init
+    (ido-vertical-mode 1))
+  (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+  (setq ido-everywhere t)
+#+END_SRC
+
+*** buffer behaviour
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+  ;;(setq obuffer--expert t) don't ask for aconfirmation
+#+END_SRC
+*** SMEX (fuzzy but for commands)
+#+BEGIN_SRC emacs-lisp
+  (use-package smex
+    :ensure t
+    :init (smex-initialize)
+    :bind
+    ("M-x" . smex))
+#+END_SRC
+*** bars and screen
+#+BEGIN_SRC emacs-lisp
+  (when window-system (global-hl-line-mode t))
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (setq scroll-conservatively 100)
+  (global-display-line-numbers-mode)
+#+END_SRC

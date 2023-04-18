@@ -30,14 +30,69 @@
   (ad-activate 'ansi-term)
   (global-set-key (kbd "<s-return>") 'ansi-term)
 #+END_SRC
+
+*** sudo edit
+#+BEGIN_SRC emacs-lisp
+  (use-package sudo-edit
+    :ensure t
+    :bind ("C-c s e" . sudo-edit))
+#+END_SRC
 ** Loose GUI section
-*** others
+*** writing (in general)
+**** electric (parenthesis pairing)
+#+BEGIN_SRC emacs-lisp
+  (setq electric-pair-pairs '(
+			      (?\( . ?\))
+			      (?\[ . ?\])
+			      (?\{ . ?\})
+			      (?\" . ?\")
+			      ))
+  (electric-pair-mode t)
+#+END_SRC
+**** kill-whole-word
+#+BEGIN_SRC emacs-lisp
+  (defun kill-whole-word ()
+    (interactive)
+    (backward-word)
+    (kill-word 1))
+  (global-set-key (kbd "C-c w w") 'kill-whole-word)
+#+END_SRC
+**** hungry-delete
+#+BEGIN_SRC emacs-lisp
+  (use-package hungry-delete
+    :ensure t
+    :config (global-hungry-delete-mode))
+#+END_SRC
+**** copy-whole-line
+#+BEGIN_SRC emacs-lisp
+  (defun copy-whole-line ()
+    (interactive)
+    (save-excursion
+      (kill-new
+       (buffer-substring
+	(point-at-bol)
+	(point-at-eol)))))
+  (global-set-key (kbd "C-c w l") 'copy-whole-line)
+#+END_SRC
+*** movement (in general)
+**** subwords movement
+#+BEGIN_SRC emacs-lisp
+  (global-subword-mode 1)
+#+END_SRC
+**** avy (move around)
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind
+    ("M-s" . avy-goto-char))
+#+END_SRC
+*** misce 
 #+BEGIN_SRC emacs-lisp
   (setq ring-bell-function 'ignore)
   (defalias 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
 
-*** IDO (fuzzy)
+*** IDO (fuzzy for files)
 #+BEGIN_SRC emacs-lisp
   (setq ido-enable-flex-matching nil)
   (setq ido-create-new-buffer 'always)
@@ -51,10 +106,18 @@
 #+END_SRC
 
 *** buffer behaviour
+**** check buffers
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ibuffer)
   ;;(setq obuffer--expert t) don't ask for aconfirmation
+#+END_SRC
+**** kill current buffer
+#+BEGIN_SRC emacs-lisp
+  (defun kill-current-buffer ()
+    (interactive)
+    (kill-buffer (current-buffer)))
+  (global-set-key (kbd "C-x k") 'kill-current-buffer)
 #+END_SRC
 *** SMEX (fuzzy but for commands)
 #+BEGIN_SRC emacs-lisp
@@ -72,7 +135,12 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (setq scroll-conservatively 100)
+#+END_SRC
+*** show line and column
+#+BEGIN_SRC emacs-lisp
   (global-display-line-numbers-mode)
+  (line-number-mode 1)
+  (column-number-mode 1)
 #+END_SRC
 *** which-key (show keystrokes)
 #+BEGIN_SRC emacs-lisp
@@ -82,13 +150,6 @@
     (which-key-mode))
 #+END_SRC
 
-*** avy (move around)
-#+BEGIN_SRC emacs-lisp
-  (use-package avy
-    :ensure t
-    :bind
-    ("M-s" . avy-goto-char))
-#+END_SRC
 *** switch windows
 #+BEGIN_SRC emacs-lisp
   (use-package switch-window
@@ -102,4 +163,8 @@
 	  '("a" "s" "d" "f" "j" "k" "l"))
     :bind
     ([remap other-window] . switch-window))
+#+END_SRC
+** Org-mode
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-window-setup 'current-window)
 #+END_SRC

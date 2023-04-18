@@ -30,7 +30,7 @@
     ("465f04ecb7486d45ed9e186588e16b0b2e7a8fc04d7d355d0ba9c0c4ea3fb6de" default)))
  '(package-selected-packages
    (quote
-    (switch-window avy ido-vertical-mode pastelmac-theme which-key use-package))))
+    (sudo-edit hungry-delete switch-window avy ido-vertical-mode pastelmac-theme which-key use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

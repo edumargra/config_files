@@ -1,4 +1,5 @@
-* My own config file for emacs (highly borrowed)
+#+title: My own config file for emacs (highly borrowed)
+#+STARTUP: indent
 
 ** Reload/Visit this very file
 *** visit
@@ -39,15 +40,29 @@
 #+END_SRC
 ** Loose GUI section
 *** writing (in general)
-**** electric (parenthesis pairing)
+**** Paranthesis
+***** electric (parenthesis pairing)
+ #+BEGIN_SRC emacs-lisp
+   (setq electric-pair-pairs '(
+			       (?\( . ?\))
+			       (?\[ . ?\])
+			       (?\{ . ?\})
+			       (?\" . ?\")
+			       ))
+   (electric-pair-mode t)
+ #+END_SRC
+
+***** rainbow (paranthesis color)
 #+BEGIN_SRC emacs-lisp
-  (setq electric-pair-pairs '(
-			      (?\( . ?\))
-			      (?\[ . ?\])
-			      (?\{ . ?\})
-			      (?\" . ?\")
-			      ))
-  (electric-pair-mode t)
+  (use-package rainbow-mode
+    :ensure t
+    :init (rainbow-mode 1))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    (rainbow-delimiters-mode 1))
 #+END_SRC
 **** kill-whole-word
 #+BEGIN_SRC emacs-lisp
@@ -60,7 +75,7 @@
 **** hungry-delete
 #+BEGIN_SRC emacs-lisp
   (use-package hungry-delete
-    :ensure t
+    :ensure f
     :config (global-hungry-delete-mode))
 #+END_SRC
 **** copy-whole-line
@@ -168,3 +183,11 @@
 #+BEGIN_SRC emacs-lisp
   (setq org-src-window-setup 'current-window)
 #+END_SRC
+** Dashboard
+#+begin_src emacs-lisp
+  (use-package dashboard
+    :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-items '((recents . 10)))
+    (setq dashboard-banner-logo-title "Have a nice day!"))
+#+end_src

@@ -11,6 +11,8 @@
 #+END_SRC
 
 *** reload
+This *doesn't work* for symbolic linked files, so in practice, does nothing.
+Delete the baking_powder.el file to reload.
 #+BEGIN_SRC emacs-lisp
   (defun bp-reload ()
     (interactive)
@@ -182,13 +184,13 @@
 *** ToDo keywords
 #+begin_src emacs-lisp
   (setq org-todo-keywords
-        '((sequence "WAITING" "TODO" "STARTED" "|" "DONE" "DELEGATED")))
+        '((sequence "WAITING" "TODO" "STARTED" "|" "DONE")))
 #+end_src
 *** ToDo faces
 #+begin_src emacs-lisp
   (setq org-todo-keyword-faces
-        '(("TODO" . org-warning)
-          ("STARTED" . "yellow")
+        '(("TODO" . "red")
+          ("STARTED" . org-warning)
           ("WAITING" . "orange")))
 #+end_src
 ** Dashyboard

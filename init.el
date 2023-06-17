@@ -27,9 +27,9 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(pastelmac))
  '(custom-safe-themes
-   '("465f04ecb7486d45ed9e186588e16b0b2e7a8fc04d7d355d0ba9c0c4ea3fb6de" default))
+   '("147f19ccebab5eb81ce9af9d40446000a3c5d0aab33313550d05d0e5f58d77cb" "465f04ecb7486d45ed9e186588e16b0b2e7a8fc04d7d355d0ba9c0c4ea3fb6de" default))
  '(package-selected-packages
-   '(rainbow-delimiters rainbow-mode sudo-edit hungry-delete switch-window avy ido-vertical-mode pastelmac-theme which-key use-package)))
+   '(rainbow-delimiters rainbow-mode sudo-edit switch-window avy ido-vertical-mode pastelmac-theme which-key use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

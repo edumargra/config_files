@@ -71,12 +71,6 @@
     (kill-word 1))
   (global-set-key (kbd "C-c w w") 'kill-whole-word)
 #+END_SRC
-**** hungry-delete
-#+BEGIN_SRC emacs-lisp
-  (use-package hungry-delete
-    :ensure f
-    :config (global-hungry-delete-mode))
-#+END_SRC
 **** copy-whole-line
 #+BEGIN_SRC emacs-lisp
   (defun copy-whole-line ()
@@ -190,7 +184,14 @@
   (setq org-todo-keywords
         '((sequence "WAITING" "TODO" "STARTED" "|" "DONE" "DELEGATED")))
 #+end_src
-** Dashboard
+*** ToDo faces
+#+begin_src emacs-lisp
+  (setq org-todo-keyword-faces
+        '(("TODO" . org-warning)
+          ("STARTED" . "yellow")
+          ("WAITING" . "orange")))
+#+end_src
+** Dashyboard
 #+begin_src emacs-lisp
   (use-package dashboard
     :config

@@ -40,7 +40,7 @@
 #+END_SRC
 ** Loose GUI section
 *** writing (in general)
-**** Paranthesis
+**** Parenthesis
 ***** electric (parenthesis pairing)
  #+BEGIN_SRC emacs-lisp
    (setq electric-pair-pairs '(
@@ -55,14 +55,13 @@
 ***** rainbow (paranthesis color)
 #+BEGIN_SRC emacs-lisp
   (use-package rainbow-mode
-    :ensure t
     :init (rainbow-mode 1))
 #+END_SRC
 #+BEGIN_SRC emacs-lisp
   (use-package rainbow-delimiters
-    :ensure t
     :init
     (rainbow-delimiters-mode 1))
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
 **** kill-whole-word
 #+BEGIN_SRC emacs-lisp
@@ -180,9 +179,17 @@
     ([remap other-window] . switch-window))
 #+END_SRC
 ** Org-mode
+*** emacs-lisp source blocks
 #+BEGIN_SRC emacs-lisp
   (setq org-src-window-setup 'current-window)
+  (add-to-list 'org-structure-template-alist
+               '("el" . "src emacs-lisp"))
 #+END_SRC
+*** ToDo keywords
+#+begin_src emacs-lisp
+  (setq org-todo-keywords
+        '((sequence "WAITING" "TODO" "STARTED" "|" "DONE" "DELEGATED")))
+#+end_src
 ** Dashboard
 #+begin_src emacs-lisp
   (use-package dashboard
@@ -190,4 +197,12 @@
     (dashboard-setup-startup-hook)
     (setq dashboard-items '((recents . 10)))
     (setq dashboard-banner-logo-title "Have a nice day!"))
+#+end_src
+** Auto completion
+*** elisp
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :init
+    (add-hook 'after-init-hook 'global-company-mode))
 #+end_src

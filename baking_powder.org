@@ -146,6 +146,7 @@ Delete the baking_powder.el file to reload.
   (scroll-bar-mode -1)
   (setq scroll-conservatively 100)
 #+END_SRC
+*** break lines *visually* by width
 *** show line and column
 #+BEGIN_SRC emacs-lisp
   (global-display-line-numbers-mode)
@@ -208,4 +209,24 @@ Delete the baking_powder.el file to reload.
     :ensure t
     :init
     (add-hook 'after-init-hook 'global-company-mode))
+#+end_src
+** Action history as tree
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :config
+    (global-undo-tree-mode 1))
+#+end_src
+** Latex usage
+*** auctex package
+#+begin_src emacs-lisp
+  (use-package auctex
+    :defer t)
+
+#+end_src
+*** Common sense features
+#+begin_src emacs-lisp
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+  (setq TeX-PDF-mode t)
 #+end_src

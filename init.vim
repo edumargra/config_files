@@ -155,6 +155,8 @@
 " fzf
  let g:rooter_patterns = ['.git']
 
- "lsp
+"lsp
  " using the inbuilt lsp client
   lua require('init')
+" python
+ " let g:python3_host_prog = '/usr/bin/python3'

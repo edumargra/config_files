@@ -26,7 +26,7 @@
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   call plug#end()
 
-  let mapleader ="\<Space>"
+  let mapleader =","
 
 " Basic options
   set backspace=indent,eol,start
@@ -114,7 +114,7 @@
   nnoremap <leader>p "+p
 
 " Clean highlight shortcut
-  nnoremap <silent> ,/ :nohlsearch<CR>
+  nnoremap <silent> c/ :nohlsearch<CR>
 
 " NerdTREE
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -126,6 +126,7 @@
   let g:NERDTreeShowLineNumbers=1
   " Close the tab if NERDTree is the only window remaining in it.
   autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+  noremap <leader>n :NERDTreeToggle<CR>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
   autocmd BufWritePre * %s/\s\+$//e
@@ -142,15 +143,11 @@
   let g:vimtex_view_general_viewer = 'zathura'
   " let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
 
-" shortcuts
+" shortcuts for navigation
   nnoremap <leader>t :$tabnew<CR>
   nnoremap <leader>s :Files<CR>
-  if !empty(glob('/home/edu'))
-    nnoremap <leader>h :Files /home/edu/<CR>
-  else
-    nnoremap <leader>h :Files /home/eduard/<CR>
-  endif
-  noremap <leader>n :NERDTreeToggle<CR>
+  nnoremap <leader>h :Files $HOME<CR>
+  nnoremap <leader>b :Buffers<CR>
 
 " fzf
  let g:rooter_patterns = ['.git']

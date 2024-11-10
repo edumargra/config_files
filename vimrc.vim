@@ -22,8 +22,7 @@
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'SirVer/ultisnips'
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+  Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
   call plug#end()
 
   let mapleader =","
@@ -151,9 +150,3 @@
 
 " fzf
  let g:rooter_patterns = ['.git']
-
-"lsp
- " using the inbuilt lsp client
-  lua require('init')
-" python
- " let g:python3_host_prog = '/usr/bin/python3'
